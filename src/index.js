@@ -1,7 +1,7 @@
 const express = require('express');
 const { handleGreeting, otherValue } = require('./greetings');
 const handleCatFactsRequest = require('./catsFacts');
-
+const brazilianCars = require('./brazilianCars');
 const app = express();
 const port = 3000;
 
@@ -15,6 +15,8 @@ app.get("/hello/:name?", (request, response) => {
 });
 
 app.get('/cat/facts', handleCatFactsRequest);
+
+app.get('/brazilian/cars', brazilianCars);
 
 app.listen(port, () => {
   console.log("Server started on", port);
