@@ -1,16 +1,21 @@
 const express = require('express');
-const greeting = require('./greetings')
-const app = express()
-const port = 3000
+const { handleGreeting, otherValue } = require('./greetings');
+const handleCatFactsRequest = require('./catsFacts');
 
-app.get('/', (request, response) => {
-    response.send('Hello World!')
-})
+const app = express();
+const port = 3000;
 
-app.get('/hello/:name?', (request, response) => {
-    greeting(request,response)
-})
+app.get("/", (request, response) => {
+  response.send("Hello World!");
+});
+
+app.get("/hello/:name?", (request, response) => {
+  handleGreeting(request, response);
+  console.log(otherValue);
+});
+
+app.get('/cat/facts', handleCatFactsRequest);
 
 app.listen(port, () => {
-    console.log('Example app listening at 3000')
-})
+  console.log("Server started on", port);
+});
