@@ -9,10 +9,11 @@ const authorizationMiddleware = (req, res, next) => {
           error: "Invalid token",
         })
       }
-      if(isValid){
-        next()
-      }
-    }
+    } else {
+    res.send({
+      error: "Invalid token",
+    })
+  }
   }
 
   module.exports = authorizationMiddleware;
